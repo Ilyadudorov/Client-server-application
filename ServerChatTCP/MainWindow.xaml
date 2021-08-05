@@ -14,8 +14,8 @@
         <TextBox HorizontalAlignment="Left" Height="35" Margin="10,184,0,0" TextWrapping="Wrap" Text="port" VerticalAlignment="Top" Width="46"/>
         <Button x:Name="ButtonConnection" Content="Connection" HorizontalAlignment="Left" Height="35" Margin="92,237,0,0" VerticalAlignment="Top" Width="214" Click="ButtonConnection_Click" />
         <Button Content="Button" HorizontalAlignment="Left" Height="35" Margin="546,69,0,0" VerticalAlignment="Top" Width="64" />
-        <TextBox x:Name="txtEditor" HorizontalAlignment="Left" Height="176" Margin="387,126,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="382"/>
-        <Button x:Name="Okbtn" Content="Ok" HorizontalAlignment="Left" Height="22" Margin="546,373,0,0" VerticalAlignment="Top" Width="64" />
+        <TextBox x:Name="txtEditor" HorizontalAlignment="Left" Height="176" Margin="387,126,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="382" />
+        <Button x:Name="Okbtn" Content="Ok" HorizontalAlignment="Left" Height="22" Margin="546,373,0,0" VerticalAlignment="Top" Width="64" Click="Okbtn_Click" />
 
     </Grid>
 </Window>

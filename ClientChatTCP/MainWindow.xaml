@@ -8,18 +8,25 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <TextBox HorizontalAlignment="Left" Height="46" Margin="274,10,0,0" TextWrapping="Wrap" Text="Client application" VerticalAlignment="Top" Width="246" FontSize="30" />
-        <TextBox x:Name="IPstring" HorizontalAlignment="Left" Height="35" Margin="92,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214"/>
-        <TextBox x:Name="Portstring" HorizontalAlignment="Left" Height="35" Margin="92,184,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="214"/>
+        <TextBox x:Name="IPstring" HorizontalAlignment="Left" Height="35" Margin="92,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Text="127.0.0.1"/>
+        <TextBox x:Name="Portstring" HorizontalAlignment="Left" Height="35" Margin="92,184,0,0" TextWrapping="Wrap" Text="8888" VerticalAlignment="Top" Width="214"/>
         <TextBox HorizontalAlignment="Left" Height="35" Margin="10,126,0,0" TextWrapping="Wrap" Text="IP" VerticalAlignment="Top" Width="46"/>
         <TextBox HorizontalAlignment="Left" Height="35" Margin="10,184,0,0" TextWrapping="Wrap" Text="port" VerticalAlignment="Top" Width="46"/>
-        <Button x:Name="ButtonConnection" Content="Connection" HorizontalAlignment="Left" Height="35" Margin="92,237,0,0" VerticalAlignment="Top" Width="214" Click="ButtonConnection_Click"/>
-        <Button Content="Button" HorizontalAlignment="Left" Height="35" Margin="546,69,0,0" VerticalAlignment="Top" Width="64" Click="btnOpenFile_Click" />
-        <TextBox x:Name="txtEditor" HorizontalAlignment="Left" Height="176" Margin="387,126,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="382"/>
-        <Button x:Name="Okbtn" Content="Ok" HorizontalAlignment="Left" Height="22" Margin="546,373,0,0" VerticalAlignment="Top" Width="64" Click="Okbtn_Click" />
-        <Button x:Name="BtnTest" Content="Test" HorizontalAlignment="Left" Height="42" Margin="123,353,0,0" VerticalAlignment="Top" Width="183" Click="BtnTest_Click"/>
-        <Button x:Name="ButtonDisconnect" Content="Disconnect" HorizontalAlignment="Left" Height="35" Margin="92,288,0,0" VerticalAlignment="Top" Width="214" Click="ButtonDisconnect_Click" />
-        <Button x:Name="SendMessage" Content="Send message" HorizontalAlignment="Left" Height="42" Margin="387,353,0,0" VerticalAlignment="Top" Width="92" Click="SendMessage_Click"/>
-        <TextBox x:Name="Status" HorizontalAlignment="Left" Height="42" Margin="10,353,0,0" TextWrapping="Wrap" Text="Status: disconnect" VerticalAlignment="Top" Width="93"/>
+        <Button Content="Button" HorizontalAlignment="Left" Height="35" Margin="546,53,0,0" VerticalAlignment="Top" Width="64" Click="btnOpenFile_Click" />
+        <TextBox x:Name="txtEditor" HorizontalAlignment="Left" Height="100" Margin="387,109,0,0" TextWrapping="Wrap" Text=""  VerticalAlignment="Top" Width="167" Background="White"/>
+        <Button x:Name="Okbtn" Content="Ok" HorizontalAlignment="Left" Height="22" Margin="546,359,0,0" VerticalAlignment="Top" Width="64" Click="Okbtn_Click" />
+        <Button x:Name="BtnTest" Content="Test" HorizontalAlignment="Left" Height="42" Margin="123,339,0,0" VerticalAlignment="Top" Width="183" Click="BtnTest_Click"/>
+        <Button x:Name="SendMessage" Content="Send message" HorizontalAlignment="Left" Height="42" Margin="387,339,0,0" VerticalAlignment="Top" Width="92" Click="SendMessage_Click"/>
+        <TextBox x:Name="Status" HorizontalAlignment="Left" Height="42" Margin="10,339,0,0" TextWrapping="Wrap" Text="Status: disconnected" VerticalAlignment="Top" Width="77"/>
+        <Button x:Name="StatusBtn" Content="Connect/Disconnect" HorizontalAlignment="Left" Height="35" Margin="92,267,0,0" VerticalAlignment="Top" Width="214" Click="StatusBtn_Click"/>
+        <RichTextBox x:Name="Color_text" HorizontalAlignment="Left" Height="100" Margin="606,109,0,0" VerticalAlignment="Top" Width="167" RenderTransformOrigin="-0.649,2.235" >
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text=""/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <Image x:Name="ImageBox" HorizontalAlignment="Left" Height="120" Margin="484,214,0,0" VerticalAlignment="Top" Width="203"/>
 
     </Grid>
 </Window>

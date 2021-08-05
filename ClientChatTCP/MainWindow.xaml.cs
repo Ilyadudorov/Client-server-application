@@ -1,20 +1,10 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Net.Sockets;
 
 namespace ClientChatTCP
 {
@@ -31,6 +21,7 @@ namespace ClientChatTCP
         public const int port = 8888;
 
         ClientChat CC;
+        private string bgImage64;
 
         public MainWindow()
         {
@@ -39,8 +30,7 @@ namespace ClientChatTCP
 
         }
 
-
-
+       
 
 
 
@@ -57,97 +47,136 @@ namespace ClientChatTCP
 
         }
 
-        private void ButtonConnection_Click(object sender, RoutedEventArgs e)
-        {
-
-            CC = new ClientChat();
-
-            CC.SetupConnection(IPstring.Text.Trim(), Convert.ToInt32(Portstring.Text.Trim()));
 
 
-            if (CC.Test())
-            {
-                Status.Text = "Status: connected";
-            }
-            else
-            {
-                Status.Text = "Status: disconnected";
-            }
-
-            //Waitfile();
-
-        }
-
-        async void Waitfile()
-        {
-            await Task.Run(() => 
-            {
-                TcpClient client = new TcpClient();
-                client.Connect(ipserver, port);
-
-                byte[] data = new byte[256];
-                StringBuilder response = new StringBuilder();
-                NetworkStream stream = client.GetStream();
-
-                do
-                {
-                    int bytes = stream.Read(data, 0, data.Length);
-                    response.Append(Encoding.UTF8.GetString(data, 0, bytes));
-                }
-                while (stream.DataAvailable); // пока данные есть в потоке
-
-                MessageBox.Show(response.ToString());
-
-                // Закрываем потоки
-                stream.Close();
-                client.Close();
-
-
-            });
-        }
 
 
 
         private void Okbtn_Click(object sender, RoutedEventArgs e)
         {
-            
+
+
+
+
+
+            SolidColorBrush color = (SolidColorBrush)(new BrushConverter().ConvertFrom("#ff50ff"));  //получаем color from hex set
+
+            txtEditor.Background = color;
+
+            Color_text.AppendText("Test string");
+
+            Color_text.Foreground = color;
+
         }
 
         private void BtnTest_Click(object sender, RoutedEventArgs e)
         {
-            
-
-            if (CC.Test())
+            if(CC != null)
             {
-                MessageBox.Show("Connected");
+                if (CC.Test())
+                {
+                    MessageBox.Show("Status: connected");
+                }
+                else
+                {
+                    MessageBox.Show("Status: disconnected");
+                }
             }
             else
             {
-                MessageBox.Show("Disconnected");
+                MessageBox.Show("Status: disconnected");
             }
-                
 
-
+            
         }
 
-        private void ButtonDisconnect_Click(object sender, RoutedEventArgs e)
+
+        private Image Image_Convert(string bgImage64)
         {
 
-            CC.CloseConnection();
+            byte[] binaryData = Convert.FromBase64String(bgImage64);
 
-            if (CC.Test())
-            {
-                Status.Text = "Status: connected";
-            }
-            else
-            {
-                Status.Text = "Status: disconnected";
-            }
+            BitmapImage bi = new BitmapImage();
+            bi.BeginInit();
+            bi.StreamSource = new MemoryStream(binaryData);
+            bi.EndInit();
+
+            Image img = new Image();
+            img.Source = bi;
+
+            return img;
         }
+
+
 
         private void SendMessage_Click(object sender, RoutedEventArgs e)
         {
-            CC.SendMsg(txtEditor.Text.ToString());
+
+            string[] words = CC.SendMsg(txtEditor.Text.ToString()).Split('#');
+
+            string from = words[0];
+            string text = words[1];
+            string colorfortext = words[2];
+            string image = words[3];
+
+
+            SolidColorBrush color = (SolidColorBrush)(new BrushConverter().ConvertFrom("#" + colorfortext));
+
+
+            txtEditor.Text = from;
+
+            Color_text.Foreground = color;
+            Color_text.AppendText(text);
+
+            ImageBox = Image_Convert(image);
+
+
+
+
+            //
+
+            
+
+        }
+
+        private void StatusBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+           
+
+            if (Status.Text == "Status: connected")
+            {
+
+                CC.CloseConnection();
+
+                if (CC.Test())
+                {
+                    Status.Text = "Status: connected";
+                }
+                else
+                {
+                    Status.Text = "Status: disconnected";
+                }
+
+            }
+            else
+            {
+                CC = new ClientChat();
+
+                CC.SetupConnection(IPstring.Text.Trim(), Convert.ToInt32(Portstring.Text.Trim()));
+
+
+                if (CC.Test())
+                {
+                    Status.Text = "Status: connected";
+                }
+                else
+                {
+                    Status.Text = "Status: disconnected";
+                }
+            }
+            
+            
         }
     }
 }
