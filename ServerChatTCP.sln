@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerChatTCP", "ServerChat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientChatTCP", "ClientChatTCP\ClientChatTCP.csproj", "{4BECEABD-9212-4B8A-921B-562075676C9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleServer", "ConsoleServer\ConsoleServer.csproj", "{EFC6DCF6-2BD4-43C3-BFD8-2904150BB38C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{4BECEABD-9212-4B8A-921B-562075676C9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BECEABD-9212-4B8A-921B-562075676C9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BECEABD-9212-4B8A-921B-562075676C9A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EFC6DCF6-2BD4-43C3-BFD8-2904150BB38C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EFC6DCF6-2BD4-43C3-BFD8-2904150BB38C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EFC6DCF6-2BD4-43C3-BFD8-2904150BB38C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EFC6DCF6-2BD4-43C3-BFD8-2904150BB38C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

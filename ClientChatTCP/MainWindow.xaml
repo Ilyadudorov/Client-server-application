@@ -26,7 +26,7 @@
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <Image x:Name="ImageBox" HorizontalAlignment="Left" Height="120" Margin="484,214,0,0" VerticalAlignment="Top" Width="203"/>
+        <Image x:Name="ImageBox" HorizontalAlignment="Left" Height="110" Margin="456,214,0,0" VerticalAlignment="Top" Width="251"/>
 
     </Grid>
 </Window>

@@ -21,7 +21,7 @@ namespace ClientChatTCP
         public const int port = 8888;
 
         ClientChat CC;
-        private string bgImage64;
+   
 
         public MainWindow()
         {
@@ -59,13 +59,14 @@ namespace ClientChatTCP
 
 
 
-            SolidColorBrush color = (SolidColorBrush)(new BrushConverter().ConvertFrom("#ff50ff"));  //получаем color from hex set
 
-            txtEditor.Background = color;
+            //txtEditor.Background = color;
 
-            Color_text.AppendText("Test string");
+            //Color_text.AppendText("Test string");
 
-            Color_text.Foreground = color;
+            //Color_text.Foreground = color;
+
+            
 
         }
 
@@ -91,7 +92,7 @@ namespace ClientChatTCP
         }
 
 
-        private Image Image_Convert(string bgImage64)
+        private ImageSource Image_Convert(string bgImage64)
         {
 
             byte[] binaryData = Convert.FromBase64String(bgImage64);
@@ -104,13 +105,17 @@ namespace ClientChatTCP
             Image img = new Image();
             img.Source = bi;
 
-            return img;
+            return img.Source;
         }
 
 
 
         private void SendMessage_Click(object sender, RoutedEventArgs e)
         {
+
+            Color_text.Document.Blocks.Clear();
+
+
 
             string[] words = CC.SendMsg(txtEditor.Text.ToString()).Split('#');
 
@@ -125,15 +130,12 @@ namespace ClientChatTCP
 
             txtEditor.Text = from;
 
+            
             Color_text.Foreground = color;
             Color_text.AppendText(text);
 
-            ImageBox = Image_Convert(image);
+            ImageBox.Source = Image_Convert(image);
 
-
-
-
-            //
 
             
 

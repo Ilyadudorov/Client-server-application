@@ -59,24 +59,6 @@ namespace ServerChatTCP
 
 
 
-
-
-                //foreach (XElement rootElement in xdoc.Element("root").Elements("Message"))
-                //{
-                //    XAttribute namefromAttribute = rootElement.Attribute("from");
-                //    XElement textElement = rootElement.Element("text");
-
-                //    if (namefromAttribute != null && textElement != null)
-                //    {
-                //        message += namefromAttribute.Value + "\n";
-                //        message += textElement.Value + "\n";
-                //    }
-
-                //}
-
-
-                // метод обработки сообщения 
-
                 data = Encoding.Unicode.GetBytes(message);
                 stream.Write(data, 0, data.Length);
             }
