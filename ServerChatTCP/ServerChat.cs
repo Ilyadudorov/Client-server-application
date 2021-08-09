@@ -69,29 +69,38 @@ namespace ServerChatTCP
 
         public List<string> ShowList()
         {
+            foreach (var i in clientlist)
+            {
+                if (!i.Connected)
+                {
+                    clientconn.Remove(i.Client.RemoteEndPoint.ToString());
+                }
+            }
             
 
             foreach (var i in clientlist)
             {
-
-                if (i.Client != null)
-                {
-                    clientconn.Add(client.Client.RemoteEndPoint.ToString());
-                }
-
                 
+                if (i.Connected)
+                {
+                    if (!clientconn.Contains(i.Client.RemoteEndPoint.ToString()))
+                    {
+                        clientconn.Add(i.Client.RemoteEndPoint.ToString());
+                    }
+                    
+                }
 
             }
 
-            return clientconn;
+            clientconn.Distinct().ToArray();
 
+            return clientconn;
         }
 
         public void CloseConnection()
         {
             if (listener != null)
                 listener.Stop();
-
 
         }
     }

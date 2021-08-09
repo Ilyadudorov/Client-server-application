@@ -43,24 +43,29 @@ namespace ServerChatTCP
                 string message = builder.ToString();
 
 
+                if (message != "")
+                {
+                    XElement xdoc = XElement.Parse(message);
+                    message = "";
+
+                    message += "From: " + xdoc.Element("Message").Attribute("from").Value + "#";
+
+                    message += xdoc.Element("Message").Element("msg").Element("text").Value + "#";
+
+                    message += xdoc.Element("Message").Element("msg").Element("text").Attribute("color").Value + "#";
+
+                    message += xdoc.Element("Message").Element("msg").Element("image").Value;
+
+
+
+                    data = Encoding.Unicode.GetBytes(message);
+                    stream.Write(data, 0, data.Length);
+
+                }
+
+
+
                 
-
-
-                XElement xdoc = XElement.Parse(message);
-                message = "";
-
-                message += "From: " + xdoc.Element("Message").Attribute("from").Value + "#";
-
-                message += xdoc.Element("Message").Element("msg").Element("text").Value + "#";
-
-                message += xdoc.Element("Message").Element("msg").Element("text").Attribute("color").Value + "#";
-
-                message += xdoc.Element("Message").Element("msg").Element("image").Value;
-
-
-
-                data = Encoding.Unicode.GetBytes(message);
-                stream.Write(data, 0, data.Length);
             }
 
 

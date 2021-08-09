@@ -8,9 +8,6 @@ using System.Windows.Media.Imaging;
 
 namespace ClientChatTCP
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public string path;
@@ -30,9 +27,6 @@ namespace ClientChatTCP
 
         }
 
-       
-
-
 
         private void btnOpenFile_Click(object sender, RoutedEventArgs e)
         {
@@ -43,32 +37,8 @@ namespace ClientChatTCP
 
 
 
-
-
         }
 
-
-
-
-
-
-        private void Okbtn_Click(object sender, RoutedEventArgs e)
-        {
-
-
-
-
-
-
-            //txtEditor.Background = color;
-
-            //Color_text.AppendText("Test string");
-
-            //Color_text.Foreground = color;
-
-            
-
-        }
 
         private void BtnTest_Click(object sender, RoutedEventArgs e)
         {
@@ -137,8 +107,6 @@ namespace ClientChatTCP
             ImageBox.Source = Image_Convert(image);
 
 
-            
-
         }
 
         private void StatusBtn_Click(object sender, RoutedEventArgs e)
@@ -180,5 +148,7 @@ namespace ClientChatTCP
             
             
         }
+
+        
     }
 }
