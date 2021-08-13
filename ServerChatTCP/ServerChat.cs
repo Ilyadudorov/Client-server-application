@@ -1,9 +1,9 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 
@@ -11,73 +11,94 @@ namespace ServerChatTCP
 {
     class ServerChat
     {
-        public string ip;
 
-        public int port;
 
-        TcpListener server;
+        public List<TcpClient> clientlist;
 
-        public ServerChat(string ip, int port)
-        {
-            this.ip = ip;
-            this.port = port;
+        public List<string> clientconn;
 
-            server = new TcpListener(IPAddress.Parse(ip), port);
+        static TcpListener listener;
 
-        }
+        public TcpClient client;
 
         public ServerChat()
         {
-           
 
-            server = new TcpListener(IPAddress.Parse("127.0.0.1"), 8888);
+
+           
+            listener = new TcpListener(IPAddress.Parse("127.0.0.1"), 8888);
+
+            clientlist = new List<TcpClient>();
+
+            clientconn = new List<string>();
 
         }
 
 
 
-        public void SetupConnection()
+        public async void SetupConnection()
         {
-            server.Start();
+            await Task.Run(() =>
+            {
+                listener.Start();
+                int i = 1;
+                while (true)
+                {
+                    client = listener.AcceptTcpClient();
+                    ClientObject clientObject = new ClientObject(client);
+
+                    clientlist.Add(client);
+
+                    i++;
+                    
+                    // создаем новый поток для обслуживания нового клиента
+                    Thread clientThread = new Thread(new ThreadStart(clientObject.Process));
+                    
+                    clientThread.Start();
+
+                    
+                    
+                }
 
 
-            TcpClient client = server.AcceptTcpClient();
+            });
+        }
 
+        public List<string> ShowList()
+        {
+            foreach (var i in clientlist)
+            {
+                if (!i.Connected)
+                {
+                    clientconn.Remove(i.Client.RemoteEndPoint.ToString());
+                }
+            }
+            
 
+            foreach (var i in clientlist)
+            {
+                
+                if (i.Connected)
+                {
+                    if (!clientconn.Contains(i.Client.RemoteEndPoint.ToString()))
+                    {
+                        clientconn.Add(i.Client.RemoteEndPoint.ToString());
+                    }
+                    
+                }
 
-            //await Task.Run(() =>
-            //{
-            //    while (true)
-            //    {
-            //        TcpClient client = server.AcceptTcpClient();
+            }
 
-            //        NetworkStream stream = client.GetStream();
+            clientconn.Distinct().ToArray();
 
-            //        string response = "Привет мир";
-            //        byte[] data = Encoding.UTF8.GetBytes(response);
-
-            //        stream.Write(data, 0, data.Length);
-
-            //        stream.Close();
-
-            //        client.Close();
-            //    }
-            //});
-
+            return clientconn;
         }
 
         public void CloseConnection()
         {
-            server.Stop();
+            if (listener != null)
+                listener.Stop();
+
         }
-
-
-
-
-
-
-
-
-        
     }
 }

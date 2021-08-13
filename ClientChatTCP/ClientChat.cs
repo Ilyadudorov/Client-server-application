@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Net.Sockets;
-using System.Text;
-using System.Xml;
 
 namespace ClientChatTCP
 {
@@ -15,35 +10,65 @@ namespace ClientChatTCP
 
         public TcpClient client;
 
-        
+        public NetworkStream stream;
+
+      
+
+
+       
+
+
+
+
 
 
         public ClientChat()
         {
-            client = new TcpClient();
+            
         }
 
 
         public void SetupConnection(string ip, int port)
         {
-            client.Connect(ip, port);
 
+            try
+            {
+                client = new TcpClient(ip, port);
+                stream = client.GetStream();
+            }
+            catch (Exception e)
+            {
+
+                
+            }
+
+            
         }
 
         public void CloseConnection()
         {
             client.Close();
+            client = null;
         }
 
-        public void SendMsg(string message)
+        public string SendMsg(string message)
         {
-            NetworkStream stream = client.GetStream();
-
-            byte[] data = Encoding.UTF8.GetBytes(message);
+            byte[] data = Encoding.Unicode.GetBytes(message);
 
             stream.Write(data, 0, data.Length);
 
-            stream.Close();
+ 
+            data = new byte[64]; // буфер для получаемых данных
+            StringBuilder builder = new StringBuilder();
+            int bytes = 0;
+            do
+            {
+                bytes = stream.Read(data, 0, data.Length);
+                builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
+            }
+            while (stream.DataAvailable);
+
+            return builder.ToString();
 
         }
 
@@ -67,6 +92,10 @@ namespace ClientChatTCP
 
         public bool Test()
         {
+            if (client == null)
+            {
+                return false;
+            }
 
             if (client.Client == null)
             {
@@ -76,9 +105,11 @@ namespace ClientChatTCP
             {
                 return true;
             }
-            
+
 
         }
+
+        
 
 
 

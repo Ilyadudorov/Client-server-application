@@ -26,9 +26,6 @@ namespace ServerChatTCP
         public MainWindow()
         {
             InitializeComponent();
-
-            
-
             
         }
 
@@ -39,6 +36,20 @@ namespace ServerChatTCP
             //SC = new ServerChat(IPstring.Text.Trim(), Convert.ToInt32(Portstring.Text.Trim()));
             SC = new ServerChat();
             SC.SetupConnection();
+        }
+
+        private void Okbtn_Click(object sender, RoutedEventArgs e)
+        {
+            txtEditor.Clear();
+
+            foreach (var item in SC.ShowList())
+            {
+                txtEditor.AppendText(item + Environment.NewLine); 
+                
+            }
+
+            
+
         }
     }
 }

@@ -5,21 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientChatTCP"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Client" Height="450" Width="800" WindowStyle="ThreeDBorderWindow" WindowStartupLocation="Manual" Background="White">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Height="46" Margin="274,10,0,0" TextWrapping="Wrap" Text="Client application" VerticalAlignment="Top" Width="246" FontSize="30" />
-        <TextBox x:Name="IPstring" HorizontalAlignment="Left" Height="35" Margin="92,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214"/>
-        <TextBox x:Name="Portstring" HorizontalAlignment="Left" Height="35" Margin="92,184,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="214"/>
-        <TextBox HorizontalAlignment="Left" Height="35" Margin="10,126,0,0" TextWrapping="Wrap" Text="IP" VerticalAlignment="Top" Width="46"/>
-        <TextBox HorizontalAlignment="Left" Height="35" Margin="10,184,0,0" TextWrapping="Wrap" Text="port" VerticalAlignment="Top" Width="46"/>
-        <Button x:Name="ButtonConnection" Content="Connection" HorizontalAlignment="Left" Height="35" Margin="92,237,0,0" VerticalAlignment="Top" Width="214" Click="ButtonConnection_Click"/>
-        <Button Content="Button" HorizontalAlignment="Left" Height="35" Margin="546,69,0,0" VerticalAlignment="Top" Width="64" Click="btnOpenFile_Click" />
-        <TextBox x:Name="txtEditor" HorizontalAlignment="Left" Height="176" Margin="387,126,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="382"/>
-        <Button x:Name="Okbtn" Content="Ok" HorizontalAlignment="Left" Height="22" Margin="546,373,0,0" VerticalAlignment="Top" Width="64" Click="Okbtn_Click" />
-        <Button x:Name="BtnTest" Content="Test" HorizontalAlignment="Left" Height="42" Margin="123,353,0,0" VerticalAlignment="Top" Width="183" Click="BtnTest_Click"/>
-        <Button x:Name="ButtonDisconnect" Content="Disconnect" HorizontalAlignment="Left" Height="35" Margin="92,288,0,0" VerticalAlignment="Top" Width="214" Click="ButtonDisconnect_Click" />
-        <Button x:Name="SendMessage" Content="Send message" HorizontalAlignment="Left" Height="42" Margin="387,353,0,0" VerticalAlignment="Top" Width="92" Click="SendMessage_Click"/>
-        <TextBox x:Name="Status" HorizontalAlignment="Left" Height="42" Margin="10,353,0,0" TextWrapping="Wrap" Text="Status: disconnect" VerticalAlignment="Top" Width="93"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="65*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="IPstring" HorizontalAlignment="Left" Height="35" Margin="46,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Text="127.0.0.1" Grid.Column="1" Foreground="Black" Background="{x:Null}" SelectionBrush="{x:Null}" BorderBrush="{x:Null}"/>
+        <TextBox x:Name="Portstring" HorizontalAlignment="Left" Height="35" Margin="46,174,0,0" TextWrapping="Wrap" Text="8888" VerticalAlignment="Top" Width="214" Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black"/>
+        <TextBox HorizontalAlignment="Left" Height="35" Margin="0,126,0,0" TextWrapping="Wrap" Text="IP" VerticalAlignment="Top" Width="46" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Grid.Column="1"/>
+        <TextBox HorizontalAlignment="Left" Height="35" Margin="0,174,0,0" TextWrapping="Wrap" Text="Port" VerticalAlignment="Top" Width="46" Foreground="Black" Background="{x:Null}" BorderBrush="{x:Null}" Grid.Column="1"/>
+        <Button x:Name="View" Content="View files" HorizontalAlignment="Left" Height="35" Margin="487,53,0,0" VerticalAlignment="Top" Width="64" Click="btnOpenFile_Click" Grid.Column="1" />
+        <TextBox x:Name="txtEditor" HorizontalAlignment="Left" Height="100" Margin="320,109,0,0" TextWrapping="Wrap" Text=""  VerticalAlignment="Top" Width="167" Background="White" Grid.Column="1"/>
+        <Button x:Name="BtnTest" Content="Test" HorizontalAlignment="Left" Height="42" Margin="125,339,0,0" VerticalAlignment="Top" Width="183" Click="BtnTest_Click" Grid.Column="1"/>
+        <Button x:Name="SendMessage" Content="Send message" HorizontalAlignment="Left" Height="42" Margin="487,339,0,0" VerticalAlignment="Top" Width="92" Click="SendMessage_Click" Grid.Column="1"/>
+        <TextBox x:Name="Status" HorizontalAlignment="Left" Height="42" Margin="0,339,0,0" TextWrapping="Wrap" Text="Status: disconnected" VerticalAlignment="Top" Width="77" Grid.Column="1"/>
+        <Button x:Name="StatusBtn" Content="Connect/Disconnect" HorizontalAlignment="Left" Height="35" Margin="10,274,0,0" VerticalAlignment="Top" Width="214" Click="StatusBtn_Click" Grid.Column="1" UseLayoutRounding="False"/>
+        <RichTextBox x:Name="Color_text" HorizontalAlignment="Left" Height="100" Margin="556,109,0,0" VerticalAlignment="Top" Width="167" RenderTransformOrigin="-0.649,2.235" Grid.Column="1" >
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text=""/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <Image x:Name="ImageBox" HorizontalAlignment="Left" Height="110" Margin="399,214,0,0" VerticalAlignment="Top" Width="251" Grid.Column="1"/>
+        <Label Content="Client application&#xD;&#xA;&#xD;&#xA;" Grid.Column="1" HorizontalAlignment="Left" Margin="273,3,0,0" VerticalAlignment="Top" Height="50" Width="238" FontSize="30"/>
 
     </Grid>
 </Window>
