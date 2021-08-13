@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Height="46" Margin="274,10,0,0" TextWrapping="Wrap" Text="Server application" VerticalAlignment="Top" Width="246" FontSize="30" />
         <TextBox x:Name="IPstring" HorizontalAlignment="Left" Height="35" Margin="92,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214"/>
         <TextBox x:Name="Portstring" HorizontalAlignment="Left" Height="35" Margin="92,184,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="214"/>
         <TextBox HorizontalAlignment="Left" Height="35" Margin="10,126,0,0" TextWrapping="Wrap" Text="IP" VerticalAlignment="Top" Width="46"/>
@@ -16,6 +15,7 @@
         <Button Content="Button" HorizontalAlignment="Left" Height="35" Margin="546,69,0,0" VerticalAlignment="Top" Width="64" />
         <TextBox x:Name="txtEditor" HorizontalAlignment="Left" Height="176" Margin="387,126,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="382" />
         <Button x:Name="Okbtn" Content="Ok" HorizontalAlignment="Left" Height="22" Margin="546,373,0,0" VerticalAlignment="Top" Width="64" Click="Okbtn_Click" />
+        <Label Content="Server application&#xA;&#xA;" HorizontalAlignment="Left" Margin="270,10,0,0" VerticalAlignment="Top" Height="56" Width="254" FontSize="30"/>
 
     </Grid>
 </Window>

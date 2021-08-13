@@ -29,7 +29,7 @@
             </FlowDocument>
         </RichTextBox>
         <Image x:Name="ImageBox" HorizontalAlignment="Left" Height="110" Margin="399,214,0,0" VerticalAlignment="Top" Width="251" Grid.Column="1"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="235,10,0,0" TextWrapping="Wrap" Text="Client application" VerticalAlignment="Top" Height="46" Width="247" FontSize="30"/>
+        <Label Content="Client application&#xD;&#xA;&#xD;&#xA;" Grid.Column="1" HorizontalAlignment="Left" Margin="273,3,0,0" VerticalAlignment="Top" Height="50" Width="238" FontSize="30"/>
 
     </Grid>
 </Window>
