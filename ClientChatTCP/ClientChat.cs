@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Net.Sockets;
+using System.Xml;
 
 namespace ClientChatTCP
 {
